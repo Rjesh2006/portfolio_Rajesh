@@ -1,6 +1,3 @@
-# Simplified workflow for static portfolio site
-# Docs: https://github.com/Azure/webapps-deploy
-
 name: Deploy static website to Azure Web App - RajeshPortfolio
 
 on:
@@ -20,7 +17,7 @@ jobs:
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'RajeshPortfolio'   # Must match your Azure App Service name
+          app-name: 'RajeshPortfolio'
           slot-name: 'production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9D93F1C17E7E4E9B83A2634D36166786 }}
           package: .
