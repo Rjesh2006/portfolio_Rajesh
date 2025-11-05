@@ -20,9 +20,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: true
+          lfs: false
 
       - name: Get ID Token
-        id: get_id_token
+        id: idtoken
         uses: actions/github-script@v6
         with:
           script: |
@@ -34,11 +37,11 @@ jobs:
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
-          github_id_token: ${{ steps.get_id_token.outputs.result }}
+          github_id_token: ${{ steps.idtoken.outputs.result }}
           action: "upload"
-          app_location: "/"        # your index.html lives here
-          api_location: ""         # no backend
-          output_location: "/"     # static files are already in root
+          app_location: "/"        # Your index.html lives here
+          api_location: ""         # No backend API
+          output_location: "."     # Static files are already in root
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
