@@ -574,6 +574,9 @@ ul { margin: 0; padding: 0; }
 .glyph-c { background: linear-gradient(135deg, #0a8fa3, #15803d); }
 .glyph-d { background: linear-gradient(135deg, #1f5fae, #2aa1b8); }
 .glyph-e { background: linear-gradient(135deg, #3f4fc4, #7b4bd0); }
+.glyph-f { background: linear-gradient(135deg, #0d7a6f, #14926a); }
+.glyph-g { background: linear-gradient(135deg, #c2410c, #ea7317); }
+.glyph-h { background: linear-gradient(135deg, #5b3fc4, #a13fb8); }
 
 .badge {
   position: absolute;

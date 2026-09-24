@@ -201,6 +201,7 @@
             <li>Virtual Machines</li><li>VNets</li><li>Subnets</li><li>NSGs</li>
             <li>Storage Accounts</li><li>Application Gateway</li><li>Traffic Manager</li>
             <li>Front Door</li><li>Azure Monitor</li><li>Workbooks</li>
+            <li>VM Scale Sets</li><li>Availability Zones</li><li>Route tables</li>
             <li>DNS</li><li>VPN</li><li>AWS</li><li>GCP</li>
           </ul>
         </article>
@@ -224,9 +225,9 @@
         <article class="skill-card">
           <h3><i class="fas fa-diagram-project" aria-hidden="true"></i> Data &amp; Pipelines</h3>
           <ul class="tags">
-            <li>Azure Event Hub</li><li>Data Factory</li><li>ADLS</li>
+            <li>Azure Event Hub</li><li>Data Factory</li><li>Databricks</li><li>ADLS</li>
             <li>Synapse Analytics</li><li>Medallion Architecture</li>
-            <li>SQL</li><li>Tableau</li><li>Excel</li>
+            <li>Power BI</li><li>SQL</li><li>Tableau</li><li>Excel</li>
           </ul>
         </article>
 
@@ -239,10 +240,12 @@
         </article>
 
         <article class="skill-card">
-          <h3><i class="fas fa-cubes" aria-hidden="true"></i> Infra, Containers &amp; Scripting</h3>
+          <h3><i class="fas fa-cubes" aria-hidden="true"></i> DevOps, Containers &amp; Scripting</h3>
           <ul class="tags">
-            <li>Terraform</li><li>Docker</li><li>Kubernetes</li><li>Git</li>
-            <li>Python</li><li>Bash</li><li>Flask</li><li>AI copilots</li>
+            <li>Terraform</li><li>Docker</li><li>Docker Compose</li><li>Kubernetes</li>
+            <li>AKS</li><li>Helm</li><li>Argo CD</li><li>GitHub Actions</li>
+            <li>GitLab CI/CD</li><li>Jenkins</li><li>ARM templates</li>
+            <li>Git</li><li>Linux</li><li>Python</li><li>Bash</li><li>Flask</li><li>Go</li>
           </ul>
         </article>
 
@@ -269,14 +272,14 @@
 
         <article class="project-card">
           <div class="project-image">
-            <img src="project1.jpg" alt="End-to-end CI/CD pipeline diagram: Git source and deployment repos feeding GitHub Actions, Docker Hub, Argo CD and AKS" width="949" height="430" loading="lazy" decoding="async">
+            <img src="project1.jpg" alt="CI/CD pipeline diagram: source and deployment repos feeding GitHub Actions, a Docker registry, Argo CD and AKS" width="949" height="430" loading="lazy" decoding="async">
             <span class="badge badge-self">Personal project</span>
           </div>
           <div class="project-info">
             <h3>End-to-End CI/CD Pipeline on AKS</h3>
-            <p>Built a full GitOps delivery pipeline: <b>GitHub Actions</b> builds and pushes images to a registry, a separate deployment repo holds the Helm and Kustomize manifests, and <b>Argo CD</b> continuously syncs desired state into <b>Azure Kubernetes Service</b>.</p>
-            <ul class="tags tags-sm"><li>AKS</li><li>GitHub Actions</li><li>Argo CD</li><li>Helm</li><li>GitOps</li></ul>
-            <a class="project-link" href="https://github.com/Rjesh2006/k8s" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i> View repository</a>
+            <p>A fully automated GitOps pipeline for a <b>Go</b> web application. A push to <code>main</code> triggers <b>GitHub Actions</b> to build, test and lint, then tags and pushes the image to DockerHub. The Helm chart auto-updates the image tag, <b>Argo CD</b> detects the change and syncs it to <b>AKS</b>, with an NGINX Ingress Controller handling routing &mdash; rollbacks included.</p>
+            <ul class="tags tags-sm"><li>AKS</li><li>GitHub Actions</li><li>Argo CD</li><li>Helm</li><li>DockerHub</li><li>Go</li></ul>
+            <a class="project-link" href="https://github.com/Rjesh2006/Go_web_app" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i> View repository</a>
           </div>
         </article>
 
@@ -287,8 +290,8 @@
           </div>
           <div class="project-info">
             <h3>Containerized Full-Stack App on Azure</h3>
-            <p>Built and deployed a containerised full-stack app with Docker, <b>Azure Container Registry</b> and <b>Azure Container Instances</b> via CLI — hosting the static frontend on GitHub Pages, and working through image access, port mapping and public DNS configuration.</p>
-            <ul class="tags tags-sm"><li>Docker</li><li>ACR</li><li>ACI</li><li>Node.js</li></ul>
+            <p>Containerised a production-ready app with Docker, pushed the image to a private <b>Azure Container Registry</b>, and deployed it to <b>Azure Container Instances</b> using the Azure CLI &mdash; resolving image access failures and port mismatches, configuring DNS name resolution for public access, and managing autoscaling rules on Container Apps.</p>
+            <ul class="tags tags-sm"><li>Docker</li><li>ACR</li><li>ACI</li><li>Azure CLI</li><li>DNS</li></ul>
             <a class="project-link" href="https://github.com/Rjesh2006/Containerized_basic_Node.js-Demo-Application" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i> View repository</a>
           </div>
         </article>
@@ -299,22 +302,46 @@
             <span class="badge badge-self">Personal project</span>
           </div>
           <div class="project-info">
-            <h3>Azure Network Architecture with Jump Host</h3>
-            <p>Designed and deployed a secure multi-subnet virtual network in Azure, using a jump host for controlled, indirect access to private resources — public and private subnets, route tables, and NSG rule and priority configuration.</p>
-            <ul class="tags tags-sm"><li>VNet</li><li>Subnets</li><li>Route tables</li><li>NSG</li></ul>
+            <h3>Public&ndash;Private Subnet Architecture with Jump Host</h3>
+            <p>Built a secure multi-subnet VNet (<code>10.0.0.0/16</code>): a public subnet hosting a jump host with a public IP, and a private subnet running an Nginx web server with no internet exposure. The private VM is reachable only through the jump host acting as a reverse proxy, enforced with custom route tables and NSGs.</p>
+            <ul class="tags tags-sm"><li>VNet</li><li>Jump host</li><li>Route tables</li><li>NSG</li><li>Nginx</li></ul>
           </div>
         </article>
 
         <article class="project-card">
           <div class="project-image project-image-glyph glyph-a">
-            <i class="fas fa-database" aria-hidden="true"></i>
+            <i class="fas fa-chart-line" aria-hidden="true"></i>
             <span class="badge badge-self">Personal project</span>
           </div>
           <div class="project-info">
-            <h3>Hospital Patient Flow Analytics</h3>
-            <p>Cloud-native real-time analytics pipeline on Azure: JSON ingestion through Event Hub into ADLS, refined across bronze, silver and gold <b>Medallion Architecture</b> layers, then modelled as a star schema in a Synapse SQL Pool for patient-flow reporting.</p>
-            <ul class="tags tags-sm"><li>Event Hub</li><li>ADLS</li><li>Synapse</li><li>Python</li></ul>
+            <h3>Real-Time Healthcare Analytics Dashboard</h3>
+            <p>End-to-end real-time analytics on Azure: streaming ingestion through <b>Event Hub</b>, processing in <b>Databricks</b> notebooks, and a bronze&ndash;silver&ndash;gold <b>Medallion Architecture</b> in ADLS. SQL views and a star schema in <b>Synapse</b> feed interactive <b>Power BI</b> dashboards, with Key Vault managing secrets and Azure Monitor handling pipeline alerts.</p>
+            <ul class="tags tags-sm"><li>Event Hub</li><li>Data Factory</li><li>Databricks</li><li>ADLS</li><li>Synapse</li><li>Power BI</li><li>Key Vault</li></ul>
             <a class="project-link" href="https://github.com/Rjesh2006/Hospital_Analytics_pr-" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i> View repository</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image project-image-glyph glyph-e">
+            <i class="fas fa-shield-halved" aria-hidden="true"></i>
+            <span class="badge badge-self">Personal project</span>
+          </div>
+          <div class="project-info">
+            <h3>Azure Network Virtual Appliance &amp; Segmentation</h3>
+            <p>Deployed a three-tier VNet &mdash; DMZ, public and private subnets &mdash; with an Ubuntu 22.04 <b>Network Virtual Appliance</b> inspecting all inter-subnet traffic. User-Defined Routes force traffic through the NVA, where iptables permits HTTP/HTTPS and SSH while blocking database access, giving microsegmentation and centralised logging.</p>
+            <ul class="tags tags-sm"><li>NVA</li><li>UDR</li><li>iptables</li><li>Microsegmentation</li><li>Azure CLI</li></ul>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image project-image-glyph glyph-f">
+            <i class="fas fa-rotate-left" aria-hidden="true"></i>
+            <span class="badge badge-self">Personal project</span>
+          </div>
+          <div class="project-info">
+            <h3>Azure Backup &amp; Disaster Recovery</h3>
+            <p>Designed and tested a full backup and DR strategy for a Linux VM on Azure: centralised backup management through a <b>Recovery Services Vault</b>, automated and on-demand backup jobs, verified recovery points, and disaster recovery drills to confirm fast failover with minimal downtime.</p>
+            <ul class="tags tags-sm"><li>Recovery Services Vault</li><li>Backup policies</li><li>Failover</li><li>RTO/RPO</li></ul>
           </div>
         </article>
 
@@ -325,9 +352,33 @@
           </div>
           <div class="project-info">
             <h3>Terraform AWS Infrastructure</h3>
-            <p>Modular Infrastructure-as-Code project automating AWS provisioning — VPC and networking, IAM, and ECS/EC2 compute — organised for code reuse and repeatable, reviewable deployments.</p>
-            <ul class="tags tags-sm"><li>Terraform</li><li>AWS</li><li>IaC</li><li>VPC</li></ul>
+            <p>A modular, production-style Terraform project automating AWS provisioning with custom modules for <b>EC2, S3, RDS, DynamoDB</b> and an Nginx setup. Uses an S3 remote backend for secure state management, a clean reusable directory structure, and optional EKS support.</p>
+            <ul class="tags tags-sm"><li>Terraform</li><li>AWS</li><li>IaC</li><li>S3 backend</li><li>EKS</li></ul>
             <a class="project-link" href="https://github.com/Rjesh2006/terraform-aws-infra" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i> View repository</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image project-image-glyph glyph-b">
+            <i class="fab fa-docker" aria-hidden="true"></i>
+            <span class="badge badge-self">Personal project</span>
+          </div>
+          <div class="project-info">
+            <h3>Multi-Container Stack with Docker Compose</h3>
+            <p>A production-shaped multi-container environment orchestrated with <b>Docker Compose</b>: a Flask backend served by <b>Gunicorn</b> as the WSGI server, behind <b>Nginx</b> acting as reverse proxy and static file server.</p>
+            <ul class="tags tags-sm"><li>Docker Compose</li><li>Flask</li><li>Gunicorn</li><li>Nginx</li></ul>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image project-image-glyph glyph-g">
+            <i class="fab fa-gitlab" aria-hidden="true"></i>
+            <span class="badge badge-self">Personal project</span>
+          </div>
+          <div class="project-info">
+            <h3>GitLab CI/CD for a Node.js App</h3>
+            <p>A <b>GitLab CI/CD</b> pipeline automating build, test and deployment of a Node.js application across three stages &mdash; dependency install, automated tests to hold code quality, and deployment &mdash; cutting manual effort and enabling continuous integration.</p>
+            <ul class="tags tags-sm"><li>GitLab CI/CD</li><li>Node.js</li><li>Pipelines</li><li>Automation</li></ul>
           </div>
         </article>
 
@@ -343,19 +394,19 @@
           </div>
           <div class="project-info">
             <h3>Google Workspace &rarr; Microsoft 365 Migration</h3>
-            <p>Led end-to-end migration of international client mailboxes and OneDrive data from Google Workspace to Microsoft 365 with minimal downtime — covering mailbox transfer, calendar and contact continuity, and user and licence provisioning.</p>
+            <p>Led end-to-end migration of international client mailboxes and OneDrive data from Google Workspace to Microsoft 365 with minimal downtime &mdash; covering mailbox transfer, calendar and contact continuity, and user and licence provisioning.</p>
             <ul class="tags tags-sm"><li>Exchange Online</li><li>OneDrive</li><li>Licensing</li><li>2025</li></ul>
           </div>
         </article>
 
         <article class="project-card">
-          <div class="project-image project-image-glyph glyph-e">
+          <div class="project-image project-image-glyph glyph-h">
             <i class="fas fa-fingerprint" aria-hidden="true"></i>
             <span class="badge badge-work">Client work</span>
           </div>
           <div class="project-info">
             <h3>Hybrid Azure AD &rarr; Microsoft Entra Join</h3>
-            <p>Migrated international client devices from Hybrid Azure AD Join to Microsoft Entra Join using the Opsole Migration Tool — pre-migration validation, execution, troubleshooting and post-migration verification, reducing on-premises AD dependency.</p>
+            <p>Migrated international client devices from Hybrid Azure AD Join to Microsoft Entra Join using the Opsole Migration Tool &mdash; pre-migration validation, execution, troubleshooting and post-migration verification, reducing on-premises AD dependency.</p>
             <ul class="tags tags-sm"><li>Entra ID</li><li>Intune</li><li>Opsole</li><li>2025</li></ul>
           </div>
         </article>
@@ -378,9 +429,6 @@
         </a>
         <a class="repo-chip" href="https://github.com/Rjesh2006/Network_traffic_analysis" target="_blank" rel="noopener">
           <b>Network Traffic Analysis</b><span>Packet capture and analysis built on libpcap</span>
-        </a>
-        <a class="repo-chip" href="https://github.com/Rjesh2006/Go_web_app" target="_blank" rel="noopener">
-          <b>Go Web App</b><span>Golang net/http service, containerised and deployed</span>
         </a>
         <a class="repo-chip" href="https://github.com/Rjesh2006/SubNetting" target="_blank" rel="noopener">
           <b>SubNetting</b><span>Subnetting fundamentals worked through with practical examples</span>
@@ -488,6 +536,13 @@
           <h3>OpenStack Cloud Computing</h3>
           <h4>Open Infrastructure Foundation</h4>
           <p class="edu-date">2024</p>
+        </article>
+
+        <article class="education-item">
+          <span class="edu-tag tag-done">Achievement</span>
+          <h3>AI Skills Fest 2026</h3>
+          <h4>Microsoft</h4>
+          <p class="edu-date">2026</p>
         </article>
       </div>
     </div>
